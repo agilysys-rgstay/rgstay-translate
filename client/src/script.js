@@ -31,14 +31,23 @@ text_area.onkeypress = async (event) => {
   }
 };
 
-copy_button.onclick = async () => {
-  try {
-    await navigator.clipboard.writeText(code.innerText)
-    copy_button.innerText = 'COPIED';
-    setTimeout(() => {
-      copy_button.innerText = 'COPY';
-    }, 1000)
-  } catch (error) {
-    console.error('Error in copying', err);
+copy_button.onclick = () => {
+  const ELM = document.createElement('textarea');
+  ELM.value = code.innerText;
+  ELM.setAttribute('readonly', '');
+  ELM.style.position = 'absolute';
+  ELM.style.left = '-9999px';
+  document.body.appendChild(ELM);
+  const SELECTED = document.getSelection().rangeCount > 0 ? document.getSelection().getRangeAt(0) : false;
+  ELM.select();
+  document.execCommand('copy');
+  copy_button.innerText = 'COPIED';
+  setTimeout(() => {
+    copy_button.innerText = 'COPY';
+  }, 1000);
+  document.body.removeChild(ELM);
+  if (SELECTED) {
+    document.getSelection().removeAllRanges();
+    document.getSelection().addRange(SELECTED);
   }
 };
