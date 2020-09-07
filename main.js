@@ -51,7 +51,7 @@ app.post('/api/translate', async (req, res) => {
   });
   try {
     let responses = await Promise.all(TRANSLATOR);
-      res.send(translations: { ...{ [DEFAULT_LANGUAGE.code]: TEXT }, ...formResponseObject(responses) });
+      res.send({ ...{ [DEFAULT_LANGUAGE.code]: TEXT }, ...formResponseObject(responses) });
   } catch (error) {
     console.error(error);
   }
