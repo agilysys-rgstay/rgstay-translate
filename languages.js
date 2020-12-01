@@ -1,10 +1,10 @@
 const LANGUAGES = [
   { code: 'es', name: 'spanish' },
-  { code: 'tl', name: 'filipino', alias: 'fil' },
+  { code: 'fil', name: 'filipino' },
   { code: 'ms', name: 'malay' },
   { code: 'vi', name: 'vietnamese' },
-  { code: 'zh-CN', name: 'chinese_simplified', alias: 'zh' },
-  { code: 'zh-TW', name: 'chinese_traditional', alias: 'zh-Hant' }
+  { code: 'zh', name: 'chinese_simplified' },
+  { code: 'zh-Hant', name: 'chinese_traditional' }
 ];
 
 module.exports = LANGUAGES;
